@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nyra Payment</title>
+    <meta
+      name="description"
+      content="Nyra secure payment page. Resolve payment token and continue to Razorpay."
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <!--
+      Optional: override the backend API base URL.
+      Uncomment and set this if deploying outside Vercel (where /api/* proxy is not available).
+      When using Vercel with vercel.json rewrites, leave this commented out.
+
+      <script>window.NYRA_API_BASE = "https://server.nyraai.io";</script>
+    -->
+    <script defer src="/app.js"></script>
+  </head>
+  <body>
+    <div class="bg-layer" aria-hidden="true"></div>
+
+    <main class="page">
+      <section class="card reveal reveal-1">
+        <p class="eyebrow">Nyra AI</p>
+        <h1 class="title">Secure Appointment Payment</h1>
+        <p class="subtitle" id="subtitleText">
+          Validating your payment link and loading details.
+        </p>
+
+        <div class="status-wrap" id="statusWrap">
+          <span class="status-chip status-loading" id="statusChip">Loading</span>
+        </div>
+
+        <div class="error-box" id="errorBox" hidden></div>
+
+        <div class="grid" id="detailsGrid" hidden>
+          <div class="item">
+            <span class="label">Hospital</span>
+            <span class="value" id="hospitalName">-</span>
+          </div>
+          <div class="item">
+            <span class="label">Amount</span>
+            <span class="value amount" id="amountText">-</span>
+          </div>
+          <div class="item">
+            <span class="label">Appointment</span>
+            <span class="value" id="appointmentId">-</span>
+          </div>
+          <div class="item">
+            <span class="label">Phone</span>
+            <span class="value" id="phoneText">-</span>
+          </div>
+          <div class="item item-full">
+            <span class="label">Token</span>
+            <span class="value mono" id="tokenText">-</span>
+          </div>
+          <div class="item item-full">
+            <span class="label">Expires</span>
+            <span class="value" id="expireText">-</span>
+          </div>
+        </div>
+
+        <div class="actions" id="actions" hidden>
+          <button type="button" class="btn btn-primary" id="payNowBtn">
+            Pay Now
+          </button>
+          <button type="button" class="btn btn-secondary" id="copyBtn">
+            Copy Payment Link
+          </button>
+        </div>
+
+        <p class="note reveal reveal-2">
+          Clicking Pay Now opens the Razorpay payment screen from the verified payment link.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
