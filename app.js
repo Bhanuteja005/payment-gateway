@@ -27,7 +27,8 @@
 
   function setError(message) {
     errorBox.hidden = false;
-    errorBox.textContent = message;
+    errorBox.textContent =
+      typeof message === "string" ? message : JSON.stringify(message) || "Unknown error.";
   }
 
   function clearError() {
